@@ -1,0 +1,81 @@
+1. mta_rf_binary_model.pkl
+•	Model Type: Random Forest Classifier (Binary)
+•	Purpose: This model predicts whether a given customer journey is considered "high performance" (i.e., customer journey time performance ≥ 0.9).
+•	Features: The model was trained using a set of features derived from both numerical and categorical data, such as platform and train time, passenger numbers, and additional journey times.
+•	Usage: It can be used for classifying new data into "high performance" or "low performance" categories based on customer journey time performance.
+2. mta_xgb_binary_model.pkl
+•	Model Type: XGBoost Classifier (Binary)
+•	Purpose: This model, like the Random Forest model, predicts whether a customer journey is high performance or low performance.
+•	Features: It utilizes the same features as the Random Forest model, but with XGBoost, which is a gradient boosting model that typically performs better with structured/tabular data.
+•	Usage: It can be used for high performance classification, especially when a more accurate model than Random Forest is needed.
+3. mta_rf_multi_model.pkl
+•	Model Type: Random Forest Classifier (Multi-class)
+•	Purpose: This model predicts customer journey performance in multiple categories, based on the value of performance_class (i.e., high, medium, or low performance).
+•	Features: The same set of features used for the binary model, but adjusted for multi-class classification.
+•	Usage: It can be used to classify new data into one of three performance categories (high, medium, or low).
+4. mta_xgb_multi_model.pkl
+•	Model Type: XGBoost Classifier (Multi-class)
+•	Purpose: This multi-class model, using XGBoost, predicts the level of performance based on customer journey time (high, medium, or low).
+•	Features: The features are the same as the other models, but trained for a multi-class classification task.
+•	Usage: It can be used for more granular classification of customer journeys into three distinct performance categories.
+5. mta_categorical_preprocessor.pkl
+•	Model Type: Categorical Preprocessing Pipeline
+•	Purpose: This file contains the fitted pipeline for handling categorical features using one-hot encoding.
+•	Features: It encodes categorical variables (like division, line, and period) into binary features to be used in the machine learning models.
+•	Usage: This can be used to preprocess any new data in the same way the training data was processed, ensuring consistency in how categorical variables are treated during model inference.
+Each of these .pkl files is saved to disk and can be reloaded later using joblib.load() for making predictions or further analysis without the need to retrain the models.
+Random Forest Binary (On-time vs. Delayed)
+•	Accuracy: 77.97%
+•	Precision: 0.79 for False (delayed), 0.00 for True (on-time)
+•	Recall: 0.98 for False, 0.00 for True
+•	F1-Score: 0.88 for False, 0.00 for True
+•	The model is good at predicting delays (False), but fails to predict on-time (True) journeys effectively.
+XGBoost Binary (On-time vs. Delayed)
+•	Accuracy: 79.72%
+•	Precision: 0.80 for False, 0.00 for True
+•	Recall: 1.00 for False, 0.00 for True
+•	F1-Score: 0.89 for False, 0.00 for True
+•	Similar to the Random Forest model, XGBoost is good at predicting delays but struggles with predicting on-time journeys.
+Random Forest Multi-class (3 Classes)
+•	Accuracy: 99.65%
+•	Precision, Recall, F1-Score: Very high for all classes (0, 1, and 2)
+•	This model performs excellently across all three classes, indicating highly accurate predictions.
+XGBoost Multi-class (3 Classes)
+•	Accuracy: 99.65%
+•	Precision, Recall, F1-Score: Very high for all classes (0, 1, and 2)
+•	Similar to Random Forest, this model also performs exceptionally well across all classes.
+Best Parameters for Random Forest
+•	Best Params: {'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 50}
+•	Best RF Accuracy: 79.37%
+•	Precision/Recall/F1-Score: Similar to the previous Random Forest binary model but with slightly improved accuracy.
+A Division Random Forest
+•	Accuracy: 71.20%
+•	Precision: 0.73 for False, 0.25 for True
+•	Recall: 0.96 for False, 0.04 for True
+•	The model performs well for delayed journeys (False) but poorly for on-time journeys (True).
+B Division Random Forest
+•	Accuracy: 82.68%
+•	Precision: 0.83 for False, 0.00 for True
+•	Recall: 1.00 for False, 0.00 for True
+•	This model is good at predicting delayed journeys but fails to predict on-time journeys.
+Key Insights:
+•	Both Random Forest and XGBoost models excel in multi-class classification, with high accuracy across all classes.
+•	The binary models (On-time vs. Delayed) struggle with predicting on-time journeys (True class) and mainly predict delays.
+•	The A Division has lower performance (71%) compared to the B Division (82.68%), where the model is more accurate.
+1. Accuracy Graphs
+•	Division Accuracy: Bar plot showing accuracy for different subway divisions.
+•	Period Accuracy: Bar plot comparing peak vs. off-peak periods to see when predictions are more accurate.
+•	Month Accuracy: Shows how accuracy changes over the months, helping to identify seasonal trends.
+2. Correlation Matrices
+•	These heatmaps display relationships between numerical variables, helping to identify strong correlations (e.g., platform time and journey performance).
+•	Useful for understanding factors that influence subway performance.
+3. Statistical Outputs
+•	Accuracy Score: The overall proportion of correct predictions.
+•	Confusion Matrices: Breakdown of correct and incorrect predictions (true positives, false positives, etc.).
+•	Classification Reports: Show precision, recall, and F1-score for on-time and delayed journeys.
+SHAP Plot (Random Forest Model)
+The SHAP plot shows feature importance and interaction values. It reveals how different features affect the model’s predictions:
+•	Blue: Positive impact on predictions.
+•	Red: Negative impact on predictions.
+•	Features at the top of the chart are more important to the model’s predictions, with time-related features like additional platform and train time playing a significant role.
+
