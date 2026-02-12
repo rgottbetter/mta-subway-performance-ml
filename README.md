@@ -18,5 +18,5 @@ src/
     clustering.py
 
 reports/
-    project_proposal.pdf
-    final_report.pdf
+    MTA_Subway_Performance_ML_Proposal.pdf
+    MTA_Subway_Performance_ML_Final.pdf
