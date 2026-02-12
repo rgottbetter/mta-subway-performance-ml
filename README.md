@@ -16,6 +16,7 @@ src/
     classification.py
     regression.py
     clustering.py
+    MTA_Subway_Customer_Journey-Focused_Metrics__Beginning_2020.csv
 
 reports/
     MTA_Subway_Performance_ML_Proposal.pdf
