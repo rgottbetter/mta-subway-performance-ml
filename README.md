@@ -2,6 +2,9 @@
 Machine learning analysis of NYC MTA subway performance using classification, regression, and clustering to evaluate customer journey time performance.
 
 MTA Subway Performance Machine Learning Analysis
+
+The project was completed as part of EN.625.742 – Theory of Machine Learning at Johns Hopkins University.
+
 Overview
 
 This project analyzes New York City Metropolitan Transportation Authority (MTA) subway performance using machine learning techniques to better understand and predict customer journey outcomes. The focus of the project is Customer Journey Time Performance (CJTP), a rider-focused metric that measures whether passengers complete their journeys within five minutes of scheduled travel time.
